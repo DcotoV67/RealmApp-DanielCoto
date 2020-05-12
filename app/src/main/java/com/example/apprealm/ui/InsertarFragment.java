@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.apprealm.R;
 import com.example.apprealm.crud.CRUDUser;
-import com.example.apprealm.model.User;
+import com.example.apprealm.model.Patin;
 
 
 /**
@@ -28,12 +27,12 @@ public class InsertarFragment extends Fragment {
 
     NavController navController;
 
-    private EditText editTextNombreUser;
-    private EditText editTextEdadUser;
-    private Button buttonInsertar;
+    private EditText editTextMarca;
+    private EditText editTextModelo;
+    private Button btn_Insertar;
 
 
-    private User user;
+    private Patin patin;
 
     public InsertarFragment() {
         // Required empty public constructor
@@ -51,27 +50,26 @@ public class InsertarFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        user = new User();
+        patin = new Patin();
 
         navController = Navigation.findNavController(view);
 
-        //insert
-        editTextEdadUser = view.findViewById(R.id.editTextEdad);
-        editTextNombreUser = view.findViewById(R.id.editTextNombre);
-        buttonInsertar = view.findViewById(R.id.buttonInsertar);
+        editTextModelo = view.findViewById(R.id.editTextModelo);
+        editTextMarca = view.findViewById(R.id.editTextMarca);
+        btn_Insertar = view.findViewById(R.id.buttonInsertar);
 
-        buttonInsertar.setOnClickListener(new View.OnClickListener() {
+        btn_Insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (editTextEdadUser.getText().toString().matches("") || editTextNombreUser.getText().toString().matches("")) {
-                    Toast.makeText(getActivity(), "Escriba el nombre y edad del usuario para insertarlo", Toast.LENGTH_SHORT).show();
+                if (editTextModelo.getText().toString().matches("") || editTextMarca.getText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "Introduce la marca y el modelo", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    user.setNombre(editTextNombreUser.getText().toString());
-                    user.setAño(editTextEdadUser.getText().toString());
-                    CRUDUser.addUser(user);
-                    Toast.makeText(getActivity(), "Usuario añadido con éxito", Toast.LENGTH_SHORT).show();
+                    patin.setMarca(editTextMarca.getText().toString());
+                    patin.setModelo(editTextModelo.getText().toString());
+                    CRUDUser.addUser(patin);
+                    Toast.makeText(getActivity(), "Se ha añadido el patín correctamente", Toast.LENGTH_SHORT).show();
 
                 }
             }

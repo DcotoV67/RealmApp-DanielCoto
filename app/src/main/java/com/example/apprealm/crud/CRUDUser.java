@@ -1,14 +1,9 @@
 package com.example.apprealm.crud;
 
-import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
+import com.example.apprealm.model.Patin;
 
-import com.example.apprealm.model.User;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -17,64 +12,64 @@ import io.realm.RealmResults;
 public class CRUDUser {
     private final static int calculateIndex(){
         Realm realm = Realm.getDefaultInstance();
-        Number currentIdNum = realm.where(User.class).max("id");
+        Number currentIdNum = realm.where(Patin.class).max("id");
         int nextId;
         if(currentIdNum == null) nextId = 0;
         else nextId = currentIdNum.intValue()+1;
         return nextId;
     }
-    public final static void addUser(final User user){
+    public final static void addUser(final Patin patin){
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 int index = CRUDUser.calculateIndex();
-                User realmUser = realm.createObject(User.class, index);
-                realmUser.setNombre(user.getNombre());
-                realmUser.setAño(user.getAño());
+                Patin realmPatin = realm.createObject(Patin.class, index);
+                realmPatin.setMarca(patin.getMarca());
+                realmPatin.setModelo(patin.getModelo());
             }
         });
     }
 
-    public final static List<User> getAllUsers(){
+    public final static List<Patin> getAllPatins(){
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<User> users = realm.where(User.class).findAll();
-        for(User user : users){
-            Log.d("TAG", "ID: " + user.getId() + " Nombre: " + user.getNombre());
+        RealmResults<Patin> patins = realm.where(Patin.class).findAll();
+        for(Patin patin : patins){
+            Log.d("TAG", "ID: " + patin.getId() + " Marca: " + patin.getMarca());
         }
-        return users;
+        return patins;
     }
 
-    public final static User getUserByName(String name){
+    public final static Patin getUserByName(String marca){
         Realm realm = Realm.getDefaultInstance();
-        User user = realm.where(User.class).equalTo("nombre", name).findFirst();
-        if(user != null) Log.d("TAG", "ID: " + user.getId() + " Nombre: " + user.getNombre() + " Edad: " + user.getAño());
-        return user;
+        Patin patin = realm.where(Patin.class).equalTo("marca", marca).findFirst();
+        if(patin != null) Log.d("TAG", "ID: " + patin.getId() + " Marca: " + patin.getMarca() + " Modelo: " + patin.getModelo());
+        return patin;
     }
 
-    public final static User updateUserById(int id, String nombreNuevo, String edadNueva){
+    public final static Patin updatePatinById(int id, String nMarca, String nModelo){
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
-        User user = realm.where(User.class).equalTo("id", id).findFirst();
-        user.setNombre(nombreNuevo);
-        user.setAño(edadNueva);
+        Patin patin = realm.where(Patin.class).equalTo("id", id).findFirst();
+        patin.setMarca(nMarca);
+        patin.setModelo(nModelo);
 
-        realm.insertOrUpdate(user);
+        realm.insertOrUpdate(patin);
         realm.commitTransaction();
 
-        if(user != null) Log.d("TAG", "ID: " + user.getId() + " Nombre: " + user.getNombre() + " Edad: " + user.getAño());
-        return user;
+        if(patin != null) Log.d("TAG", "ID: " + patin.getId() + " Marca: " + patin.getMarca() + " Modelo: " + patin.getModelo());
+        return patin;
     }
 
     public static void deleteUserById(int id) {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
-        User user = realm.where(User.class).equalTo("id", id).findFirst();
+        Patin patin = realm.where(Patin.class).equalTo("id", id).findFirst();
 
-        if(user!=null){
-            user.deleteFromRealm();
+        if(patin !=null){
+            patin.deleteFromRealm();
         }
         realm.commitTransaction();
 

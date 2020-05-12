@@ -8,37 +8,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <EditText
-            android:id="@+id/editTextModificarUser"
-            android:layout_width="match_parent"
+            android:id="@+id/editTextModificarPatin"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="ID del usuario" />
+            android:hint="ID del Patin"
+            android:textSize="16sp"
+            android:layout_marginBottom="40dp"/>
 
         <EditText
-            android:id="@+id/editTextNombreNuevo"
-            android:layout_width="match_parent"
+            android:id="@+id/editTextMarcaN"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Nombre Nuevo" />
+            android:inputType="text"
+            android:hint="Nueva Marca"
+            android:textSize="16sp"
+            android:layout_marginBottom="40dp"/>
 
         <EditText
-            android:id="@+id/editTextEdadNueva"
-            android:layout_width="match_parent"
+            android:id="@+id/editTextModeloN"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="Edad Nueva" />
+            android:inputType="text"
+            android:hint="Nuevo Modelo"
+            android:textSize="16sp"
+            android:layout_marginBottom="40dp"/>
 
         <Button
-            android:id="@+id/buttonModificar"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_modificar"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Modificar usuario" />
+            android:text="Modificar Patin"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 </FrameLayout>

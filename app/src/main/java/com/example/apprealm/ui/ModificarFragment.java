@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.apprealm.R;
 import com.example.apprealm.crud.CRUDUser;
-import com.example.apprealm.model.User;
+import com.example.apprealm.model.Patin;
 
 
 /**
@@ -23,11 +23,11 @@ import com.example.apprealm.model.User;
  */
 public class ModificarFragment extends Fragment {
 
-    private Button buttonModificar;
+    private Button btn_Modificar;
 
-    private EditText editTextModificarUser;
-    private EditText editTextNombreNuevo;
-    private EditText editTextEdadNueva;
+    private EditText editTextModificarPatin;
+    private EditText editTextMarcaN;
+    private EditText editTextModeloN;
 
     public ModificarFragment() {
         // Required empty public constructor
@@ -45,32 +45,31 @@ public class ModificarFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //modificar
-        editTextModificarUser = view.findViewById(R.id.editTextModificarUser);
-        editTextNombreNuevo = view.findViewById(R.id.editTextNombreNuevo);
-        editTextEdadNueva = view.findViewById(R.id.editTextEdadNueva);
-        buttonModificar = view.findViewById(R.id.buttonModificar);
+        editTextModificarPatin = view.findViewById(R.id.editTextModificarPatin);
+        editTextMarcaN = view.findViewById(R.id.editTextMarcaN);
+        editTextModeloN = view.findViewById(R.id.editTextModeloN);
+        btn_Modificar = view.findViewById(R.id.btn_modificar);
 
-        buttonModificar.setOnClickListener(new View.OnClickListener() {
+        btn_Modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editTextModificarUser.getText().toString().matches("") ||
-                        editTextNombreNuevo.getText().toString().matches("") ||
-                        editTextEdadNueva.getText().toString().matches("")) {
-                    Toast.makeText(getActivity(), "Inserte los datos para modificar", Toast.LENGTH_SHORT).show();
+                if (editTextModificarPatin.getText().toString().matches("") ||
+                        editTextMarcaN.getText().toString().matches("") ||
+                        editTextModeloN.getText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "Escribe la nueva marca y el nuevo modelo", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    int id = Integer.parseInt(editTextModificarUser.getText().toString());
-                    for (User u: CRUDUser.getAllUsers()) {
+                    int id = Integer.parseInt(editTextModificarPatin.getText().toString());
+                    for (Patin u: CRUDUser.getAllPatins()) {
                         int id2 = u.getId();
                         if(id==id2) {
-                            CRUDUser.updateUserById(Integer.parseInt(editTextModificarUser.getText().toString()),
-                                    editTextNombreNuevo.getText().toString(),
-                                    editTextEdadNueva.getText().toString());
-                            Toast.makeText(getActivity(), "El usuario ha sido modificado con exito", Toast.LENGTH_SHORT).show();
+                            CRUDUser.updatePatinById(Integer.parseInt(editTextModificarPatin.getText().toString()),
+                                    editTextMarcaN.getText().toString(),
+                                    editTextModeloN.getText().toString());
+                            Toast.makeText(getActivity(), "Se han realizado los cambios con exito", Toast.LENGTH_SHORT).show();
                             return;
                         } else{
-                            Toast.makeText(getActivity(), "ID del usuario no encontrado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Error, ID incorrecto, no se ha encontrado el ID", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }

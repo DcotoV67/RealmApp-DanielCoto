@@ -7,19 +7,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.apprealm.R;
 import com.example.apprealm.crud.CRUDUser;
-import com.example.apprealm.model.User;
+import com.example.apprealm.model.Patin;
 
 import java.util.List;
 
@@ -29,13 +26,13 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    private Button buttonInsertar;
-    private Button buttonBorrar;
-    private Button buttonBuscar;
-    private Button buttonModificar;
-    private Button buttonListaUsuarios;
+    private Button btn_Insertar;
+    private Button btn_Borrar;
+    private Button btn_Buscar;
+    private Button btn_Modificar;
+    private Button btn_ListaPatins;
 
-    private TextView textViewListaUsers;
+    private TextView textViewListaPatins;
 
     NavController navController;
 
@@ -56,58 +53,58 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<User> users = CRUDUser.getAllUsers();
+        List<Patin> patins = CRUDUser.getAllPatins();
 
         navController = Navigation.findNavController(view);
 
-        textViewListaUsers = view.findViewById(R.id.textViewListaUsers);
-        textViewListaUsers.setVisibility(TextView.INVISIBLE);
+        textViewListaPatins = view.findViewById(R.id.listaPatinesTextView);
+        textViewListaPatins.setVisibility(TextView.INVISIBLE);
 
-        //insert
-        buttonInsertar = view.findViewById(R.id.buttonNavInsertar);
-        //listar
-        buttonListaUsuarios = view.findViewById(R.id.buttonNavListaUsuarios);
-        //buscar
-        buttonBuscar = view.findViewById(R.id.buttonNavBuscar);
-        //modificar
-        buttonModificar = view.findViewById(R.id.buttonNavModificar);
-        //borrar
-        buttonBorrar = view.findViewById(R.id.buttonNavBorrar);
 
-        buttonInsertar.setOnClickListener(new View.OnClickListener() {
+        btn_Insertar = view.findViewById(R.id.buttonNavInsertar);
+
+        btn_ListaPatins = view.findViewById(R.id.buttonNavListaPatins);
+
+        btn_Buscar = view.findViewById(R.id.buttonNavBuscar);
+
+        btn_Modificar = view.findViewById(R.id.buttonNavModificar);
+
+        btn_Borrar = view.findViewById(R.id.buttonNavBorrar);
+
+        btn_Insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.insertarFragment);
             }
         });
 
-        buttonBuscar.setOnClickListener(new View.OnClickListener() {
+        btn_Buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.buscarFragment);
             }
         });
 
-        buttonModificar.setOnClickListener(new View.OnClickListener() {
+        btn_Modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.modificarFragment);
             }
         });
 
-        buttonBorrar.setOnClickListener(new View.OnClickListener() {
+        btn_Borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.borrarFragment);
             }
         });
 
-        buttonListaUsuarios.setOnClickListener(new View.OnClickListener() {
+        btn_ListaPatins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewListaUsers.setVisibility(TextView.VISIBLE);
-                List<User> users = CRUDUser.getAllUsers();
-                textViewListaUsers.setText(users.toString());
+                textViewListaPatins.setVisibility(TextView.VISIBLE);
+                List<Patin> patins = CRUDUser.getAllPatins();
+                textViewListaPatins.setText(patins.toString());
             }
         });
     }

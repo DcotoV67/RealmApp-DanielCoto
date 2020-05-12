@@ -1,6 +1,5 @@
 package com.example.apprealm.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.apprealm.R;
 import com.example.apprealm.crud.CRUDUser;
-import com.example.apprealm.model.User;
+import com.example.apprealm.model.Patin;
 
 
 /**
@@ -24,8 +23,8 @@ import com.example.apprealm.model.User;
  */
 public class BorrarFragment extends Fragment {
 
-    private Button buttonBorrar;
-    private EditText editTextBorrarUser;
+    private Button btn_Borrar;
+    private EditText etBorrarPatin;
 
     public BorrarFragment() {
         // Required empty public constructor
@@ -46,25 +45,25 @@ public class BorrarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //borrar
-        editTextBorrarUser = view.findViewById(R.id.editTextBorrarUser);
-        buttonBorrar = view.findViewById(R.id.buttonBorrar);
+        etBorrarPatin = view.findViewById(R.id.borrarPatinEditText);
+        btn_Borrar = view.findViewById(R.id.btn_borrar);
 
-        buttonBorrar.setOnClickListener(new View.OnClickListener() {
+        btn_Borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editTextBorrarUser.getText().toString().matches("")) {
-                    Toast.makeText(getActivity(), "Inserte el id del usuario que quiere borrar", Toast.LENGTH_SHORT).show();
+                if (etBorrarPatin.getText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "ID del patín a borrar", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    int id = Integer.parseInt(editTextBorrarUser.getText().toString());
-                    for (User u: CRUDUser.getAllUsers()) {
+                    int id = Integer.parseInt(etBorrarPatin.getText().toString());
+                    for (Patin u: CRUDUser.getAllPatins()) {
                         int id2 = u.getId();
                         if(id==id2) {
-                            CRUDUser.deleteUserById(Integer.parseInt(editTextBorrarUser.getText().toString()));
-                            Toast.makeText(getActivity(), "El usuario ha sido borrado con exito", Toast.LENGTH_SHORT).show();
+                            CRUDUser.deleteUserById(Integer.parseInt(etBorrarPatin.getText().toString()));
+                            Toast.makeText(getActivity(), "Se ha borrado el patín", Toast.LENGTH_SHORT).show();
                             return;
                         } else{
-                            Toast.makeText(getActivity(), "Inserte un id valido", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "ID incorrecto, utiliza un ID valido", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }

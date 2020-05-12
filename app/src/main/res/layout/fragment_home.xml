@@ -8,43 +8,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <Button
             android:id="@+id/buttonNavInsertar"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Insertar usuario" />
+            android:text="Insertar Patin"
+            android:layout_marginBottom="40dp"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/buttonNavBorrar"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Borrar usuario" />
+            android:text="Borrar Patin"
+            android:layout_marginBottom="40dp"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/buttonNavBuscar"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Buscar usuario" />
+            android:text="Buscar Patin (por marca)"
+            android:layout_marginBottom="40dp"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/buttonNavModificar"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Modificar usuario" />
+            android:text="Modificar Patin"
+            android:layout_marginBottom="40dp"
+            android:textSize="16sp"/>
 
         <Button
-            android:id="@+id/buttonNavListaUsuarios"
-            android:layout_width="match_parent"
+            android:id="@+id/buttonNavListaPatins"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Ver lista de usuario" />
+            android:text="Ver patines"
+            android:layout_marginBottom="40dp"
+            android:textSize="16sp"/>
 
         <TextView
-            android:id="@+id/textViewListaUsers"
-            android:layout_width="match_parent"
+            android:id="@+id/listaPatinesTextView"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_marginBottom="40dp"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 

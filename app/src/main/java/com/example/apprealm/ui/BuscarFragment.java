@@ -15,14 +15,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.apprealm.R;
 import com.example.apprealm.crud.CRUDUser;
-import com.example.apprealm.model.User;
+import com.example.apprealm.model.Patin;
 
 public class BuscarFragment extends Fragment {
 
-    private Button buttonBuscar;
-    private EditText editTextNombreBuscar;
+    private Button btn_Buscar;
+    private EditText etBuscarMarca;
 
-    private TextView textViewBuscarUser;
+    private TextView buscarPatintextView;
 
     public BuscarFragment() {
     }
@@ -39,23 +39,23 @@ public class BuscarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //buscar
-        editTextNombreBuscar = view.findViewById(R.id.editTextNombreBuscar);
-        buttonBuscar = view.findViewById(R.id.buttonBuscar);
-        textViewBuscarUser = view.findViewById(R.id.textViewBuscarUser);
-        textViewBuscarUser.setVisibility(TextView.INVISIBLE);
+        etBuscarMarca = view.findViewById(R.id.buscarMarcaEditText);
+        btn_Buscar = view.findViewById(R.id.btn_buscar);
+        buscarPatintextView = view.findViewById(R.id.buscarPatinTextView);
+        buscarPatintextView.setVisibility(TextView.INVISIBLE);
 
-        buttonBuscar.setOnClickListener(new View.OnClickListener() {
+        btn_Buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = CRUDUser.getUserByName(editTextNombreBuscar.getText().toString());
-                if (editTextNombreBuscar.getText().toString().matches("")) {
-                    Toast.makeText(getActivity(), "Inserte el nombre del usuario que quiere buscar", Toast.LENGTH_SHORT).show();
+                Patin patin = CRUDUser.getUserByName(etBuscarMarca.getText().toString());
+                if (etBuscarMarca.getText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "Escribe la marca que quieres buscar", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    if(user != null){
-                        textViewBuscarUser.setVisibility(TextView.VISIBLE);
-                        textViewBuscarUser.setText(user.toString());
-                    } else Toast.makeText(getActivity(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                    if(patin != null){
+                        buscarPatintextView.setVisibility(TextView.VISIBLE);
+                        buscarPatintextView.setText(patin.toString());
+                    } else Toast.makeText(getActivity(), "No se ha encontrado la marca", Toast.LENGTH_SHORT).show();
 
                 }
             }

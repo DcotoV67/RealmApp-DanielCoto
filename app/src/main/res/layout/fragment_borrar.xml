@@ -8,21 +8,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <EditText
-            android:id="@+id/editTextBorrarUser"
-            android:layout_width="match_parent"
+            android:id="@+id/borrarPatinEditText"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="ID del usuario"
-            android:inputType="number" />
+            android:hint="ID a borrar"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:layout_marginBottom="40dp"/>
 
         <Button
-            android:id="@+id/buttonBorrar"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_borrar"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Borrar usuario" />
+            android:text="Borrar Patin"
+            android:textSize="16sp"/>
     </LinearLayout>
 
 </FrameLayout>
