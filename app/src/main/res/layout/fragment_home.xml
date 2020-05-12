@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonNavInsertar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insertar usuario" />
+
+        <Button
+            android:id="@+id/buttonNavBorrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Borrar usuario" />
+
+        <Button
+            android:id="@+id/buttonNavBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar usuario" />
+
+        <Button
+            android:id="@+id/buttonNavModificar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modificar usuario" />
+
+        <Button
+            android:id="@+id/buttonNavListaUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver lista de usuario" />
+
+        <TextView
+            android:id="@+id/textViewListaUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+</FrameLayout>
