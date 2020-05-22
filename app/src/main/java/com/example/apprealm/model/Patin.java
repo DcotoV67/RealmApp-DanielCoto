@@ -6,8 +6,7 @@ import io.realm.annotations.PrimaryKey;
 public class Patin extends RealmObject {
     @PrimaryKey
     private int id;
-    private String marca;
-    private String modelo;
+    private String marcaModelo;
 
     public int getId() {
         return id;
@@ -17,26 +16,20 @@ public class Patin extends RealmObject {
         this.id = id;
     }
 
-    public String getMarca() {
-        return marca;
+
+    public String getMarcaModelo() {
+        return marcaModelo;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setMarcaModelo(String marcaModelo) {
+        this.marcaModelo = marcaModelo;
     }
 
     @Override
     public String toString() {
-        return "Id: '" + id + '\'' +
-                ", Marca: '" + marca + '\'' +
-                ", Modelo: '" + modelo + '\'' + "\n";
+        return "Patin{" +
+                "id=" + id +
+                ", marcaModelo='" + marcaModelo + '\'' +
+                '}';
     }
 }

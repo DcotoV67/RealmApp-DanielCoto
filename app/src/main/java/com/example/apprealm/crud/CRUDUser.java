@@ -25,8 +25,7 @@ public class CRUDUser {
             public void execute(Realm realm) {
                 int index = CRUDUser.calculateIndex();
                 Patin realmPatin = realm.createObject(Patin.class, index);
-                realmPatin.setMarca(patin.getMarca());
-                realmPatin.setModelo(patin.getModelo());
+                realmPatin.setMarcaModelo(patin.getMarcaModelo());
             }
         });
     }
@@ -35,30 +34,29 @@ public class CRUDUser {
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Patin> patins = realm.where(Patin.class).findAll();
         for(Patin patin : patins){
-            Log.d("TAG", "ID: " + patin.getId() + " Marca: " + patin.getMarca());
+            Log.d("TAG", "ID: " + patin.getId() + " Marca: "  + " Marca y modelo: " + patin.getMarcaModelo());
         }
         return patins;
     }
 
-    public final static Patin getUserByName(String marca){
+    public final static Patin getUserByName(String marcaModelo){
         Realm realm = Realm.getDefaultInstance();
-        Patin patin = realm.where(Patin.class).equalTo("marca", marca).findFirst();
-        if(patin != null) Log.d("TAG", "ID: " + patin.getId() + " Marca: " + patin.getMarca() + " Modelo: " + patin.getModelo());
+        Patin patin = realm.where(Patin.class).equalTo("marcaModelo", marcaModelo).findFirst();
+        if(patin != null) Log.d("TAG", "ID: " + patin.getId() + "Marca y modelo: " + patin.getMarcaModelo());
         return patin;
     }
 
-    public final static Patin updatePatinById(int id, String nMarca, String nModelo){
+    public final static Patin updatePatinById(int id, String nMarcaModelo){
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
         Patin patin = realm.where(Patin.class).equalTo("id", id).findFirst();
-        patin.setMarca(nMarca);
-        patin.setModelo(nModelo);
+        patin.setMarcaModelo(nMarcaModelo);
 
         realm.insertOrUpdate(patin);
         realm.commitTransaction();
 
-        if(patin != null) Log.d("TAG", "ID: " + patin.getId() + " Marca: " + patin.getMarca() + " Modelo: " + patin.getModelo());
+        if(patin != null) Log.d("TAG", "ID: " + patin.getId() + "Marca y modelo: " + patin.getMarcaModelo());
         return patin;
     }
 

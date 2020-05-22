@@ -20,8 +20,7 @@ import com.example.apprealm.model.Patin;
 public class BuscarFragment extends Fragment {
 
     private Button btn_Buscar;
-    private EditText etBuscarMarca;
-
+    private EditText etBuscarMarcaModelo;
     private TextView buscarPatintextView;
 
     public BuscarFragment() {
@@ -39,7 +38,7 @@ public class BuscarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //buscar
-        etBuscarMarca = view.findViewById(R.id.buscarMarcaEditText);
+        etBuscarMarcaModelo = view.findViewById(R.id.buscarMarcaModeloEditText);
         btn_Buscar = view.findViewById(R.id.btn_buscar);
         buscarPatintextView = view.findViewById(R.id.buscarPatinTextView);
         buscarPatintextView.setVisibility(TextView.INVISIBLE);
@@ -47,15 +46,15 @@ public class BuscarFragment extends Fragment {
         btn_Buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Patin patin = CRUDUser.getUserByName(etBuscarMarca.getText().toString());
-                if (etBuscarMarca.getText().toString().matches("")) {
-                    Toast.makeText(getActivity(), "Escribe la marca que quieres buscar", Toast.LENGTH_SHORT).show();
+                Patin patin = CRUDUser.getUserByName(etBuscarMarcaModelo.getText().toString());
+                if (etBuscarMarcaModelo.getText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "Escribe la marca y el modelo que quieres buscar", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     if(patin != null){
                         buscarPatintextView.setVisibility(TextView.VISIBLE);
                         buscarPatintextView.setText(patin.toString());
-                    } else Toast.makeText(getActivity(), "No se ha encontrado la marca", Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(getActivity(), "No se ha encontrado el patin", Toast.LENGTH_SHORT).show();
 
                 }
             }

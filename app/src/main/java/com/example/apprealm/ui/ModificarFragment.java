@@ -26,8 +26,8 @@ public class ModificarFragment extends Fragment {
     private Button btn_Modificar;
 
     private EditText editTextModificarPatin;
-    private EditText editTextMarcaN;
-    private EditText editTextModeloN;
+    private EditText editTextMarcaModeloN;
+
 
     public ModificarFragment() {
         // Required empty public constructor
@@ -46,16 +46,14 @@ public class ModificarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         editTextModificarPatin = view.findViewById(R.id.editTextModificarPatin);
-        editTextMarcaN = view.findViewById(R.id.editTextMarcaN);
-        editTextModeloN = view.findViewById(R.id.editTextModeloN);
+        editTextMarcaModeloN = view.findViewById(R.id.editTextMarcaModeloN);
         btn_Modificar = view.findViewById(R.id.btn_modificar);
 
         btn_Modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (editTextModificarPatin.getText().toString().matches("") ||
-                        editTextMarcaN.getText().toString().matches("") ||
-                        editTextModeloN.getText().toString().matches("")) {
+                        editTextMarcaModeloN.getText().toString().matches("")) {
                     Toast.makeText(getActivity(), "Escribe la nueva marca y el nuevo modelo", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -64,8 +62,7 @@ public class ModificarFragment extends Fragment {
                         int id2 = u.getId();
                         if(id==id2) {
                             CRUDUser.updatePatinById(Integer.parseInt(editTextModificarPatin.getText().toString()),
-                                    editTextMarcaN.getText().toString(),
-                                    editTextModeloN.getText().toString());
+                                    editTextMarcaModeloN.getText().toString());
                             Toast.makeText(getActivity(), "Se han realizado los cambios con exito", Toast.LENGTH_SHORT).show();
                             return;
                         } else{

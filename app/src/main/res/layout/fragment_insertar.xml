@@ -11,23 +11,14 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <EditText
-            android:id="@+id/editTextMarca"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Marca"
-            android:textSize="16sp"
-            android:layout_marginBottom="40dp"/>
 
         <EditText
-            android:id="@+id/editTextModelo"
+            android:id="@+id/editTextMarcaModelo"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:hint="Modelo"
+            android:hint="Marca y Modelo"
             android:textSize="16sp"
             android:layout_marginBottom="40dp"/>
 

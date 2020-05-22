@@ -27,8 +27,7 @@ public class InsertarFragment extends Fragment {
 
     NavController navController;
 
-    private EditText editTextMarca;
-    private EditText editTextModelo;
+    private EditText editTextMarcaModelo;
     private Button btn_Insertar;
 
 
@@ -54,20 +53,19 @@ public class InsertarFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
 
-        editTextModelo = view.findViewById(R.id.editTextModelo);
-        editTextMarca = view.findViewById(R.id.editTextMarca);
+        editTextMarcaModelo = view.findViewById(R.id.editTextMarcaModelo);
+
         btn_Insertar = view.findViewById(R.id.buttonInsertar);
 
         btn_Insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (editTextModelo.getText().toString().matches("") || editTextMarca.getText().toString().matches("")) {
+                if (editTextMarcaModelo.getText().toString().matches("")){
                     Toast.makeText(getActivity(), "Introduce la marca y el modelo", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    patin.setMarca(editTextMarca.getText().toString());
-                    patin.setModelo(editTextModelo.getText().toString());
+                    patin.setMarcaModelo(editTextMarcaModelo.getText().toString());
                     CRUDUser.addUser(patin);
                     Toast.makeText(getActivity(), "Se ha añadido el patín correctamente", Toast.LENGTH_SHORT).show();
 
